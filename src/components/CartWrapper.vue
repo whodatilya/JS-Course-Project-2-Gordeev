@@ -106,8 +106,7 @@ export default {
 
     goToOffer() {
       if (this.CART.length) {
-        //Сделать так, чтобы выводилось не предупреждение, а добавление.
-        this.$emit('click', this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽");
+        alert(this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽");
       } else {
         alert("Add something to cart");
       }
