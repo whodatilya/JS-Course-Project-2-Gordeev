@@ -10,6 +10,12 @@ let store = new Vuex.Store({
         products: [],
         cart: [],
         fullPrise: 0,
+        profile: {
+            username: '',
+            email: '',
+            address: '',
+            phone: ''
+        }
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -20,6 +26,12 @@ let store = new Vuex.Store({
                 let keys = Object.keys(images);
                 el.image = images[keys[(keys.length * Math.random()) << 0]];
             });
+        },
+        saveAccount(state, profile) {
+            state.profile.username = profile.name
+            state.profile.email = profile.email
+            state.profile.address = profile.address
+            state.profile.phone = profile.phone
         },
         SET_CART: (state, productData) => {
             if (state.cart.length) {
@@ -53,6 +65,9 @@ let store = new Vuex.Store({
         },
     },
     actions: {
+        saveAccount(context, newProfile) {
+            context.commit('saveAccount', newProfile)
+        },
         GET_PRODUCTS_FROM_API({ commit }) {
             return axios(
                 "https://random-data-api.com/api/vehicle/random_vehicle?size=100",
@@ -94,6 +109,9 @@ let store = new Vuex.Store({
         },
         FULL_PRICE(state) {
             return state.fullPrise;
+        },
+        getProfile(state) {
+            return state.profile
         },
     },
 });

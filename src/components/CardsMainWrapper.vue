@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      images: images
+      images: images,
     };
   },
   computed: {
@@ -53,6 +53,7 @@ export default {
 </script>
 
 <style scoped>
+
 .cards-main {
   width: 100%;
   height: 100%;
