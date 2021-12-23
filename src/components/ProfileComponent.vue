@@ -4,15 +4,15 @@
     <div class="profile_wrapper">
       <ul style="list-style-type: none;">
         <h1>Имя</h1>
-        <li> <input type="text" required v-model="name"></li>
+        <li> <input type="text" name="" required="" v-model="name"></li>
+        <h1>Фамилия</h1>
+        <li> <input type="text" name="" required="" v-model="surname"></li>
         <h1>Email</h1>
-        <li > <input type="email" required v-model="email"></li>
+        <li > <input type="email" name="" required v-model="email"></li>
         <h1>Адрес</h1>
-        <li style="margin-bottom: 10px;"><input type="text" required v-model="address"></li>
-        <h1>Номер телефона</h1>
-        <li style="margin-bottom: 30px;"><input type="number" required v-model="phone"></li>
+        <li style="margin-bottom: 10px;"><input type="text" name="" required v-model="address"></li>
         <li>
-          <button class="submit_button" @click="saveAccount">
+          <button class="submit_button" @click="persist">
             Сохранить
           </button>
         </li>
@@ -22,35 +22,35 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
 export default {
   name: "ProfileComponent",
   data() {
     return {
       name: '',
+      surname: '',
       email: '',
       address: '',
-      phone: ''
     }
   },
   methods: {
-    saveAccount() {
-      const savedProfile =
-          {name: this.name, email: this.email, address: this.address, phone: this.phone};
-      this.$store.dispatch('saveAccount', savedProfile);
-      alert('Аккаунт добавлен!')
+    persist() {
+      const addProfile = { name: this.name, surname: this.surname, email: this.email, address: this.address }
+      localStorage.setItem('profile', JSON.stringify(addProfile))
+      alert('Данные сохранены!')
+    }
+    },
+
+  mounted() {
+    const profile = JSON.parse(localStorage.getItem('profile'))
+    const isProfileEmpty = !(profile.name && profile.surname && profile.email && profile.address)
+    if (!isProfileEmpty) {
+      this.name = profile.name
+      this.surname = profile.surname
+      this.email = profile.email
+      this.address = profile.address
     }
   },
-  computed: {
-    ...mapGetters(['getProfile']),
-  },
-  mounted() {
-    const profile = this.$store.getters.getProfile;
-    this.name = profile.username;
-    this.email = profile.email;
-    this.address = profile.address;
-    this.phone = profile.phone;
-  }
+
 }
 </script>
 
