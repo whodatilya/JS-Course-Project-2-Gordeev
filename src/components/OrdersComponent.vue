@@ -2,12 +2,12 @@
   <div>
     <div class="orders_header">Заказы</div>
       <div class="orders_wrapper">
-        <ul>
+        <ul style="list-style-type: none;">
           <li>
-
+            {{ getOrder }}
           </li>
         </ul>
-      <button class="submit_button" @click="clearOrdered">Clear orders</button>
+      <button class="submit_button" @click="clearOrdered" onclick="location.reload()">Clear orders</button>
     </div>
   </div>
 </template>
@@ -16,9 +16,6 @@
 export default {
   name: "OrdersComponent",
   methods: {
-    getOrder(){
-      localStorage.getItem('order')
-    },
     clearOrdered(){
       localStorage.removeItem('order')
     }
@@ -29,7 +26,12 @@ export default {
       default: 'Заказ'
 
     }
-  }
+  },
+  computed:{
+    getOrder(){
+      return localStorage.getItem('order')
+    }
+  },
 }
 ;
 
