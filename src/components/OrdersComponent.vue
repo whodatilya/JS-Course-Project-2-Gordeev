@@ -1,8 +1,12 @@
 <template>
   <div>
     <div class="orders_header">Заказы</div>
-    <div class="orders_wrapper">
+      <div class="orders_wrapper">
+        <ul>
+          <li>
 
+          </li>
+        </ul>
       <button class="submit_button" @click="clearOrdered">Clear orders</button>
     </div>
   </div>
@@ -11,7 +15,23 @@
 <script>
 export default {
   name: "OrdersComponent",
-};
+  methods: {
+    getOrder(){
+      localStorage.getItem('order')
+    },
+    clearOrdered(){
+      localStorage.removeItem('order')
+    }
+  },
+  props:{
+    orderInfo:{
+      type: String,
+      default: 'Заказ'
+
+    }
+  }
+}
+;
 
 </script>
 

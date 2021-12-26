@@ -109,7 +109,8 @@ export default {
       const isEmptyProfile = !(profile.name && profile.surname && profile.email && profile.address)
       if (this.CART.length) {
         if (!isEmptyProfile) {
-          alert(this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽");
+          this.$router.push('/orders')
+          localStorage.setItem('order', JSON.stringify(this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽"));
         }
         else
         {
