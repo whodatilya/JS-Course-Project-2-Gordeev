@@ -20,13 +20,6 @@ export default {
       localStorage.removeItem('order')
     }
   },
-  props:{
-    orderInfo:{
-      type: String,
-      default: 'Заказ'
-
-    }
-  },
   computed:{
     getOrder(){
       return localStorage.getItem('order')
