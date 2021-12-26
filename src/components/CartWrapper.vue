@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="cart-title">
-      Вы в корзине
+      Корзина
     </div>
     <div class="cart-main">
       <div class="cart-order">
@@ -34,7 +34,7 @@
             />
           </div>
           <div v-else style="font-size:1.2em">
-            Ваша корзина пуста :с
+            Корзина пуста
           </div>
 
         </div>
@@ -42,9 +42,10 @@
       <div class="cart-details">
         <div class="btn-wrapper-upper">
           <div class="btn-wrapper">
-            <button type="button" class="btn go-to-offer" @click="goToOffer">
-              Продолжить оформление
+            <button class="btn go-to-offer" @click="orderItems">
+              Заказать
             </button>
+
           </div>
         </div>
         <div class="in-cart-details">
@@ -103,12 +104,22 @@ export default {
       this.UPDATE_CART(this.CART.filter(el => !el.checked));
       this.DO_FULL_PRICE();
     },
-
-    goToOffer() {
+    orderItems() {
+      const profile = JSON.parse(localStorage.getItem('profile'))
+      const isEmptyProfile = !(profile.name && profile.surname && profile.email && profile.address)
       if (this.CART.length) {
-        alert(this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽");
-      } else {
-        alert("Add something to cart");
+        if (!isEmptyProfile) {
+          alert(this.CART.map(el => `${el.make_and_model} ${el.price}₽ x${el.quantity}`) + " Сумма: " + this.FULL_PRICE + " ₽");
+        }
+        else
+        {
+          alert('Заполните данные профиля!')
+          this.$router.push('/profile')
+        }
+      }
+      else
+      {
+        alert("Добавьте что-нибудь в корзину!");
       }
     }
   }

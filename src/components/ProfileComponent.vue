@@ -4,13 +4,13 @@
     <div class="profile_wrapper">
       <ul style="list-style-type: none;">
         <h1>Имя</h1>
-        <li> <input type="text" name="" required="" v-model="name"></li>
+        <li> <input type="text" name="" required v-model="name"></li>
         <h1>Фамилия</h1>
-        <li> <input type="text" name="" required="" v-model="surname"></li>
+        <li> <input type="text" name="" required v-model="surname"></li>
         <h1>Email</h1>
-        <li > <input type="email" name="" required v-model="email"></li>
+        <li > <input type="email" name="" required="" v-model="email"></li>
         <h1>Адрес</h1>
-        <li style="margin-bottom: 10px;"><input type="text" name="" required v-model="address"></li>
+        <li style="margin-bottom: 10px;"><input type="text" name="" required="" v-model="address"></li>
         <li>
           <button class="submit_button" @click="persist">
             Сохранить
