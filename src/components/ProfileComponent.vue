@@ -34,7 +34,12 @@ export default {
   },
   methods: {
     persist() {
-      const addProfile = { name: this.name, surname: this.surname, email: this.email, address: this.address }
+      const addProfile = {
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        address: this.address
+      }
       localStorage.setItem('profile', JSON.stringify(addProfile))
       alert('Данные сохранены!')
     }

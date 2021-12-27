@@ -3,7 +3,7 @@
     <HeaderWrapper />
     <router-view />
     <div class="footer">
-      <div class="water-mark">Made by Ilya Gordeev, 2021</div>
+      <div class="water-mark">Ahahahaha, 2021</div>
     </div>
   </div>
 </template>
