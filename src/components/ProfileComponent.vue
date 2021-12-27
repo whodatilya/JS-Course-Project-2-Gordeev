@@ -12,7 +12,7 @@
         <h1>Адрес</h1>
         <li style="margin-bottom: 10px;"><input type="text" name="" required="" v-model="address"></li>
         <li>
-          <button class="submit_button" @click="persist">
+          <button class="btn" @click="persist">
             Сохранить
           </button>
         </li>

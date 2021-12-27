@@ -100,7 +100,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="css">
 .card-wrapper {
   width: 100%;
   height: 100%;

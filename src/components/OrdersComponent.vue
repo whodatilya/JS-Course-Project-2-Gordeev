@@ -7,7 +7,7 @@
             {{ getOrder }}
           </li>
         </ul>
-      <button class="submit_button" @click="clearOrdered" onclick="location.reload()">Очистить историю заказов</button>
+      <button class="btn" @click="clearOrdered" onclick="location.reload()">Очистить историю</button>
     </div>
   </div>
 </template>
